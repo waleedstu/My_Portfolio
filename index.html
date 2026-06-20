@@ -3,909 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Waleed Bin Imran — Design, Social, Automate</title>
-<meta name="description" content="Graphic design, social media management, and AI agent automation (n8n + Vapi) by Muhammad Waleed Bin Imran.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Keto For Ketoers — The Good Side Of The Food</title>
+<meta name="description" content="Hygienic, low-carb keto food delivered fresh across Lahore. Breads, rotis, desserts, snacks, cookies and halwas — all keto-friendly.">
+<link rel="stylesheet" href="css/style.css">
 <style>
-  :root{
-    --ink:#0F1115;
-    --ink-soft:#15171F;
-    --ink-card:#1A1D27;
-    --line:rgba(255,255,255,0.09);
-    --text:#ECEAE6;
-    --text-dim:#9B9BA8;
-    --text-faint:#6E6E7A;
-    --paper:#F7F5F1;
-    --violet:#7C5CFF;
-    --violet-soft:rgba(124,92,255,0.14);
-    --coral:#FF6B4A;
-    --coral-soft:rgba(255,107,74,0.14);
-    --mint:#2BD9A8;
-    --mint-soft:rgba(43,217,168,0.14);
-    --radius:14px;
-    --display:'Space Grotesk',sans-serif;
-    --body:'Plus Jakarta Sans',sans-serif;
-    --mono:'JetBrains Mono',monospace;
+  .hero {
+    padding: 72px 0 60px;
+    position: relative;
+    overflow: hidden;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
   }
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--text);
-    font-family:var(--body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 40px; text-align: center; }
+    .hero-stamp-wrap { order: -1; }
   }
-  img,svg{display:block; max-width:100%;}
-  a{color:inherit; text-decoration:none;}
-  button{font-family:inherit; cursor:pointer;}
-  h1,h2,h3,h4{font-family:var(--display); margin:0; line-height:1.1; letter-spacing:-0.01em;}
-  p{margin:0;}
-  ul{margin:0; padding:0; list-style:none;}
-  .wrap{max-width:1140px; margin:0 auto; padding:0 24px;}
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--text-dim);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
+  .hero-eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
   }
-  .eyebrow::before{
-    content:'';
-    width:6px; height:6px; border-radius:50%;
-    background:currentColor;
-    display:inline-block;
+  @media (max-width: 860px) {
+    .hero-eyebrow-row { justify-content: center; }
   }
-  :focus-visible{outline:2px solid var(--mint); outline-offset:3px; border-radius:4px;}
+  .hero h1 {
+    font-size: clamp(38px, 5.5vw, 60px);
+    margin-bottom: 18px;
+  }
+  .hero p.lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  @media (max-width: 860px) {
+    .hero p.lede { margin-left: auto; margin-right: auto; }
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 860px) { .hero-ctas { justify-content: center; } }
 
-  /* ---------- NAV ---------- */
-  .nav{
-    position:sticky; top:0; z-index:100;
-    background:rgba(15,17,21,0.82);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+  .hero-stamp-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   }
-  .nav-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 24px;
-    max-width:1140px; margin:0 auto;
+  .hero-stamp {
+    width: 280px;
+    height: 280px;
+    color: var(--forest);
+    animation: stampIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .logo{display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:600; font-size:16px;}
-  .logo-mark{
-    width:34px; height:34px; border-radius:50%;
-    background:linear-gradient(135deg,var(--coral),var(--violet) 55%,var(--mint));
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-size:12px; font-weight:600; color:#0F1115;
-  }
-  .nav-links{display:flex; align-items:center; gap:28px; font-size:14.5px; color:var(--text-dim);}
-  .nav-links a{transition:color .15s ease;}
-  .nav-links a:hover{color:var(--text);}
-  .nav-cta{
-    font-family:var(--mono); font-size:13px;
-    background:var(--text); color:var(--ink);
-    padding:9px 16px; border-radius:999px; font-weight:600;
-    transition:transform .15s ease;
-  }
-  .nav-cta:hover{transform:translateY(-1px);}
-  .nav-toggle{
-    display:none; background:none; border:1px solid var(--line); border-radius:8px;
-    width:38px; height:38px; align-items:center; justify-content:center; color:var(--text);
-  }
-  .nav-toggle svg{width:18px; height:18px;}
-  .nav-mobile{display:none; flex-direction:column; gap:2px; padding:8px 24px 18px; border-bottom:1px solid var(--line);}
-  .nav-mobile a{padding:12px 4px; font-size:15px; color:var(--text-dim); border-bottom:1px solid var(--line);}
-  .nav-mobile a:last-child{border-bottom:none;}
-  .nav.open .nav-mobile{display:flex;}
-
-  @media (max-width:760px){
-    .nav-links{display:none;}
-    .nav-toggle{display:flex;}
+  @keyframes stampIn {
+    0% { transform: scale(1.4) rotate(-8deg); opacity: 0; }
+    60% { transform: scale(0.96) rotate(2deg); opacity: 1; }
+    100% { transform: scale(1) rotate(-4deg); opacity: 1; }
   }
 
-  /* ---------- HERO ---------- */
-  .hero{padding:84px 0 60px; position:relative; overflow:hidden;}
-  .hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:radial-gradient(620px 320px at 18% 0%, var(--violet-soft), transparent 60%),
-               radial-gradient(560px 300px at 85% 10%, var(--coral-soft), transparent 60%);
-    pointer-events:none;
+  .badge-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
   }
-  .hero-inner{position:relative; z-index:1;}
-  .hero h1{
-    font-size:clamp(34px,5.2vw,58px);
-    margin:18px 0 18px;
-    max-width:780px;
+  @media (max-width: 860px) { .badge-row { justify-content: center; } }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--forest);
   }
-  .hero h1 .accent-c{color:var(--coral);}
-  .hero h1 .accent-v{color:var(--violet);}
-  .hero h1 .accent-m{color:var(--mint);}
-  .hero-sub{
-    font-size:17px; color:var(--text-dim); max-width:560px; margin-bottom:30px;
-  }
-  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:46px;}
-  .btn{
-    font-family:var(--body); font-weight:600; font-size:15px;
-    padding:13px 22px; border-radius:999px; border:1px solid transparent;
-    display:inline-flex; align-items:center; gap:8px;
-    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--mint); color:#08221A;}
-  .btn-primary:hover{box-shadow:0 8px 20px rgba(43,217,168,0.25);}
-  .btn-outline{border-color:var(--line); color:var(--text);}
-  .btn-outline:hover{border-color:var(--text-dim);}
-  .btn-ghost{color:var(--text-dim); font-size:14px; padding:13px 6px;}
-  .btn-ghost:hover{color:var(--text);}
+  .pill svg { width: 13px; height: 13px; }
 
-  /* node pipeline (signature element) */
-  .pipeline{display:flex; align-items:center; gap:0; max-width:620px;}
-  .node{
-    display:flex; flex-direction:column; align-items:center; gap:8px;
-    text-align:center; width:96px; flex-shrink:0;
+  /* Categories */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
   }
-  .node-dot{
-    width:46px; height:46px; border-radius:50%;
-    border:1.5px solid var(--line);
-    background:var(--ink-card);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-size:13px; font-weight:600; color:var(--text-dim);
-    position:relative; z-index:2;
-  }
-  .node[data-cat="design"] .node-dot{border-color:var(--coral); color:var(--coral);}
-  .node[data-cat="social"] .node-dot{border-color:var(--mint); color:var(--mint);}
-  .node[data-cat="automate"] .node-dot{border-color:var(--violet); color:var(--violet);}
-  .node-label{font-size:12.5px; color:var(--text-dim); font-family:var(--mono); letter-spacing:0.02em;}
-  .connector{
-    flex:1; height:1px; background:var(--line); position:relative; margin:0 -2px; top:-18px;
-    overflow:hidden;
-  }
-  .connector::after{
-    content:''; position:absolute; top:-2px; left:0; width:5px; height:5px; border-radius:50%;
-    background:var(--mint);
-    animation:travel 3.2s ease-in-out infinite;
-  }
-  .connector.c2::after{background:var(--violet); animation-delay:1.1s;}
-  @keyframes travel{
-    0%{left:-2%; opacity:0;}
-    8%{opacity:1;}
-    92%{opacity:1;}
-    100%{left:96%; opacity:0;}
-  }
-  @media (max-width:560px){
-    .pipeline{max-width:100%;}
-    .node{width:74px;}
-    .node-dot{width:38px; height:38px; font-size:11px;}
-    .node-label{font-size:10.5px;}
-  }
+  @media (max-width: 860px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- SECTION GENERIC ---------- */
-  .section{padding:74px 0;}
-  .section-head{max-width:620px; margin-bottom:44px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,36px); margin-top:14px;}
-  .section-head p{color:var(--text-dim); margin-top:12px; font-size:15.5px;}
-  .border-top{border-top:1px solid var(--line);}
-
-  /* ---------- ABOUT ---------- */
-  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;}
-  .about-text p{color:var(--text-dim); font-size:15.5px; margin-bottom:14px;}
-  .about-text p:last-child{margin-bottom:0;}
-  .tool-groups{display:flex; flex-direction:column; gap:18px;}
-  .tool-group-label{font-family:var(--mono); font-size:11.5px; color:var(--text-faint); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px; display:block;}
-  .tags{display:flex; flex-wrap:wrap; gap:8px;}
-  .tag{
-    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
-    border:1px solid var(--line); border-radius:999px; padding:6px 12px;
+  .cat-card {
+    background: var(--cream-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  @media (max-width:780px){ .about-grid{grid-template-columns:1fr; gap:36px;} }
-
-  /* ---------- SERVICES / TABS ---------- */
-  .tabs{display:flex; gap:10px; margin-bottom:8px; flex-wrap:wrap;}
-  .tab-btn{
-    background:var(--ink-card); border:1px solid var(--line); color:var(--text-dim);
-    border-radius:999px; padding:10px 18px 10px 14px; font-size:14px; font-weight:600;
-    display:flex; align-items:center; gap:9px; transition:all .15s ease;
+  .cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(44, 38, 34, 0.08);
+    border-color: var(--terracotta);
   }
-  .tab-btn .tab-num{
-    font-family:var(--mono); font-size:11.5px; width:22px; height:22px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; border:1px solid var(--line);
-    color:var(--text-faint);
+  .cat-icon {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--paper-card);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--terracotta-dark);
   }
-  .tab-btn[aria-selected="true"]{color:var(--ink); }
-  .tab-btn[data-cat="design"][aria-selected="true"]{background:var(--coral); border-color:var(--coral);}
-  .tab-btn[data-cat="design"][aria-selected="true"] .tab-num{border-color:rgba(0,0,0,0.2); color:var(--ink);}
-  .tab-btn[data-cat="social"][aria-selected="true"]{background:var(--mint); border-color:var(--mint);}
-  .tab-btn[data-cat="social"][aria-selected="true"] .tab-num{border-color:rgba(0,0,0,0.2); color:var(--ink);}
-  .tab-btn[data-cat="automate"][aria-selected="true"]{background:var(--violet); border-color:var(--violet);}
-  .tab-btn[data-cat="automate"][aria-selected="true"] .tab-num{border-color:rgba(255,255,255,0.3); color:#fff;}
-
-  .panel{display:none; padding-top:30px;}
-  .panel.active{display:block;}
-  .panel-head{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:26px;}
-  .panel-head h3{font-size:22px;}
-  .panel-head p{color:var(--text-dim); font-size:14.5px; max-width:460px; margin-top:6px;}
-
-  .price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  @media (max-width:900px){ .price-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:620px){ .price-grid{grid-template-columns:1fr;} }
-
-  .price-card{
-    background:var(--ink-card); border:1px solid var(--line); border-radius:var(--radius);
-    padding:22px; display:flex; flex-direction:column; gap:14px;
-    transition:border-color .15s ease, transform .15s ease;
+  .cat-icon svg { width: 26px; height: 26px; }
+  .cat-card h3 { font-size: 20px; color: var(--forest); }
+  .cat-card p { font-size: 14px; color: var(--ink-soft); margin: 0; flex-grow: 1; }
+  .cat-card .cat-link {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--terracotta-dark);
+    display: flex; align-items: center; gap: 6px;
   }
-  .price-card:hover{transform:translateY(-3px);}
-  .panel[data-cat="design"] .price-card:hover{border-color:var(--coral);}
-  .panel[data-cat="social"] .price-card:hover{border-color:var(--mint);}
-  .panel[data-cat="automate"] .price-card:hover{border-color:var(--violet);}
-  .price-card.featured{border-color:var(--text-faint);}
-  .price-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
-  .price-name{font-family:var(--display); font-size:16.5px; font-weight:600;}
-  .price-tag{
-    font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--text-faint); border:1px solid var(--line); border-radius:6px; padding:3px 7px;
-  }
-  .price-num{font-family:var(--mono); font-size:26px; font-weight:600;}
-  .price-num span{font-size:13px; color:var(--text-dim); font-weight:400;}
-  .price-desc{color:var(--text-dim); font-size:14px; flex:1;}
-  .price-get{
-    align-self:flex-start; font-family:var(--mono); font-size:13px; font-weight:600;
-    border:1px solid var(--line); border-radius:999px; padding:9px 16px;
-    background:transparent; color:var(--text); display:flex; align-items:center; gap:6px;
-    transition:background .15s ease, color .15s ease, border-color .15s ease;
-  }
-  .panel[data-cat="design"] .price-get:hover{background:var(--coral); color:#1c0a05; border-color:var(--coral);}
-  .panel[data-cat="social"] .price-get:hover{background:var(--mint); color:#08221A; border-color:var(--mint);}
-  .panel[data-cat="automate"] .price-get:hover{background:var(--violet); color:#fff; border-color:var(--violet);}
+  .cat-card .cat-link svg { width: 13px; height: 13px; transition: transform 0.15s ease; }
+  .cat-card:hover .cat-link svg { transform: translateX(3px); }
 
-  .price-note{
-    margin-top:22px; font-size:13.5px; color:var(--text-faint); border-top:1px solid var(--line); padding-top:18px;
+  /* About */
+  .about-section {
+    background: var(--forest);
+    color: var(--paper);
+    border-radius: 24px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
   }
-  .addon-row{
-    margin-top:18px; display:flex; justify-content:space-between; align-items:center; gap:14px;
-    background:var(--ink-soft); border:1px dashed var(--line); border-radius:12px; padding:16px 18px; flex-wrap:wrap;
+  @media (max-width: 800px) {
+    .about-section { grid-template-columns: 1fr; padding: 36px 24px; }
   }
-  .addon-row .addon-text{font-size:14px; color:var(--text-dim);}
-  .addon-row .addon-text b{color:var(--text); font-family:var(--mono); font-weight:600;}
+  .about-section h2 { color: var(--paper); font-size: 32px; margin-bottom: 16px; }
+  .about-section p { color: rgba(251,246,236,0.78); font-size: 15.5px; line-height: 1.7; margin-bottom: 14px; }
+  .about-stats { display: flex; gap: 36px; margin-top: 24px; flex-wrap: wrap; }
+  .about-stat .num { font-family: var(--font-display); font-size: 34px; font-weight: 600; color: var(--paper); }
+  .about-stat .label { font-family: var(--font-mono); font-size: 12px; color: rgba(251,246,236,0.6); text-transform: uppercase; letter-spacing: 0.06em; }
 
-  /* ---------- WHY ---------- */
-  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-  @media (max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .why-grid{grid-template-columns:1fr;} }
-  .why-card{padding:22px 0; border-top:1px solid var(--line);}
-  .why-card h4{font-size:15.5px; margin-bottom:8px;}
-  .why-card p{color:var(--text-dim); font-size:14px;}
-  .why-mark{font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-bottom:10px; display:block;}
+  .about-stamp { width: 100%; max-width: 280px; margin: 0 auto; color: rgba(251,246,236,0.9); }
 
-  /* ---------- FAQ ---------- */
-  .faq-list{max-width:760px;}
-  details{border-top:1px solid var(--line); padding:18px 0;}
-  details:last-child{border-bottom:1px solid var(--line);}
-  summary{
-    cursor:pointer; font-family:var(--display); font-size:16px; font-weight:600;
-    display:flex; justify-content:space-between; align-items:center; list-style:none;
+  /* Delivery */
+  .delivery-card {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
   }
-  summary::-webkit-details-marker{display:none;}
-  summary .plus{font-family:var(--mono); font-size:18px; color:var(--text-dim); transition:transform .2s ease;}
-  details[open] summary .plus{transform:rotate(45deg);}
-  details p{color:var(--text-dim); font-size:14.5px; margin-top:12px; max-width:640px;}
-
-  /* ---------- CONTACT ---------- */
-  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px;}
-  @media (max-width:880px){ .contact-grid{grid-template-columns:1fr; gap:36px;} }
-  .contact-direct{display:flex; flex-direction:column; gap:14px;}
-  .contact-row{
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    background:var(--ink-card); border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+  @media (max-width: 760px) {
+    .delivery-card { grid-template-columns: 1fr; text-align: center; }
   }
-  .contact-row .cinfo{display:flex; flex-direction:column; gap:3px;}
-  .contact-row .clabel{font-family:var(--mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.08em;}
-  .contact-row .cvalue{font-size:15px;}
-  .copy-btn{
-    font-family:var(--mono); font-size:12px; color:var(--text-dim); background:none;
-    border:1px solid var(--line); border-radius:8px; padding:7px 11px; white-space:nowrap;
+  .delivery-icon {
+    width: 64px; height: 64px;
+    background: var(--forest);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin: 0 auto;
   }
-  .copy-btn:hover{color:var(--text); border-color:var(--text-dim);}
-  .copy-btn.copied{color:var(--mint); border-color:var(--mint);}
-
-  .form-card{background:var(--ink-card); border:1px solid var(--line); border-radius:var(--radius); padding:26px;}
-  .field{margin-bottom:16px; display:flex; flex-direction:column; gap:7px;}
-  .field label{font-size:13px; color:var(--text-dim); font-family:var(--mono);}
-  .field input, .field select, .field textarea{
-    background:var(--ink-soft); border:1px solid var(--line); border-radius:8px;
-    padding:11px 13px; color:var(--text); font-family:var(--body); font-size:14.5px; resize:vertical;
+  .delivery-icon svg { width: 30px; height: 30px; }
+  .delivery-text h3 { font-size: 22px; margin-bottom: 8px; }
+  .delivery-text p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+  .delivery-fee {
+    font-family: var(--font-mono);
+    text-align: center;
+    background: var(--cream-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px 22px;
+    white-space: nowrap;
   }
-  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--mint);}
-  .form-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;}
-  .form-msg{margin-top:12px; font-size:13.5px; color:var(--mint); display:none;}
-  .form-msg.show{display:block;}
+  .delivery-fee .amt { font-size: 22px; font-weight: 500; color: var(--forest); display: block; }
+  .delivery-fee .lbl { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }
 
-  /* ---------- FOOTER ---------- */
-  footer{border-top:1px solid var(--line); padding:36px 0; }
-  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
-  footer .fname{font-family:var(--display); font-weight:600; font-size:15px;}
-  footer .fmeta{color:var(--text-faint); font-size:13px; font-family:var(--mono);}
-
-  /* back to top */
-  .totop{
-    position:fixed; bottom:24px; right:24px; z-index:90;
-    width:44px; height:44px; border-radius:50%;
-    background:var(--ink-card); border:1px solid var(--line); color:var(--text);
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
-  }
-  .totop.show{opacity:1; pointer-events:auto;}
-  .totop:hover{transform:translateY(-2px);}
-
-  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
-  .reveal.in{opacity:1; transform:none;}
+  .section-head { margin-bottom: 36px; text-align: center; }
+  .section-head h2 { font-size: 34px; margin: 10px 0 12px; }
+  .section-head p { color: var(--ink-soft); font-size: 16px; max-width: 520px; margin: 0 auto; }
 </style>
 </head>
 <body>
 
-<header class="nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="#home" class="logo"><span class="logo-mark">MW</span> Waleed Imran</a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="#contact" class="nav-cta">Hire me →</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="nav-mobile" id="navMobile">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </div>
-</header>
-
 <main>
-
   <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="wrap hero-inner">
-      <span class="eyebrow">Freelance · Design / Social / Automation</span>
-      <h1>I <span class="accent-c">design</span> it, <span class="accent-m">grow</span> it, and <span class="accent-v">automate</span> it.</h1>
-      <p class="hero-sub">Muhammad Waleed Bin Imran — graphic design, hands-on social media management, and AI agent builds with n8n and Vapi. One person, three skills, no agency markup.</p>
-      <div class="hero-ctas">
-        <button class="btn btn-primary" data-wa-msg="Hi Waleed, I found your portfolio and I'd like to talk about a project.">Message on WhatsApp</button>
-        <a href="#services" class="btn btn-outline">See services &amp; pricing</a>
-        <a href="mailto:waleedimran2518@gmail.com" class="btn btn-ghost">or email me directly →</a>
+  <section class="hero container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow-row">
+          <span class="eyebrow">Est. 2017 · Lahore</span>
+        </div>
+        <h1>The good side<br>of the food.</h1>
+        <p class="lede">Hygienic, low-carb keto meals made fresh and delivered to your door. Breads, rotis, desserts, snacks, and more — every item on the menu is keto-friendly.</p>
+        <div class="hero-ctas">
+          <a href="#categories" class="btn btn-primary">Browse the menu</a>
+          <a href="https://wa.me/923001234567" class="btn btn-secondary">Order on WhatsApp</a>
+        </div>
+        <div class="badge-row" style="margin-top: 28px;">
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Keto friendly</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Low carb</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Lahore delivery</span>
+        </div>
       </div>
-      <div class="pipeline" aria-hidden="true">
-        <div class="node" data-cat="design"><span class="node-dot">01</span><span class="node-label">Design</span></div>
-        <div class="connector"></div>
-        <div class="node" data-cat="social"><span class="node-dot">02</span><span class="node-label">Social</span></div>
-        <div class="connector c2"></div>
-        <div class="node" data-cat="automate"><span class="node-dot">03</span><span class="node-label">Automate</span></div>
+      <div class="hero-stamp-wrap">
+        <svg class="hero-stamp" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="2"/>
+          <circle cx="100" cy="100" r="78" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 4"/>
+          <path id="topCirclePath" d="M 100, 100 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0" fill="none"/>
+          <text font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="3" fill="currentColor">
+            <textPath href="#topCirclePath" startOffset="2%">KETO FOR KETOERS • EST. 2017 •</textPath>
+          </text>
+          <path d="M100 62L132 90V138H68V90L100 62Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M85 100V128M85 100C85 96 82 93 82 93M85 100C85 96 88 93 88 93" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M115 93V128" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M111 93V104C111 106.7 113.2 109 116 109C118.7 109 121 106.7 121 104V93" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section container" id="categories">
+    <div class="section-head">
+      <span class="eyebrow">Our menu</span>
+      <h2>Five categories, all keto.</h2>
+      <p>Pick a category to see the full lineup, set quantities, and add straight to your cart.</p>
+    </div>
+    <div class="cat-grid" id="categoryGrid"></div>
   </section>
 
   <!-- ABOUT -->
-  <section class="section border-top reveal" id="about">
-    <div class="wrap about-grid">
-      <div class="about-text">
-        <span class="eyebrow">About</span>
-        <h2 style="margin-top:14px; font-size:26px;">A designer who also builds the systems that promote and run the work.</h2>
-        <p style="margin-top:18px;">I started as a graphic designer, moved into running social pages by hand because automated scheduling never got the engagement right, and now I build AI agents — chat and voice — for businesses that want to stop missing leads after hours.</p>
-        <p>Most freelancers hand you one piece. I can hand you the visual, the page that shares it, and the bot or voice agent that follows up on it — separately or as one package.</p>
-      </div>
-      <div class="tool-groups">
-        <div>
-          <span class="tool-group-label">Design tools</span>
-          <div class="tags"><span class="tag">Photoshop</span><span class="tag">Canva Pro</span><span class="tag">Canva AI</span><span class="tag">ChatGPT</span></div>
-        </div>
-        <div>
-          <span class="tool-group-label">Platforms I manage</span>
-          <div class="tags"><span class="tag">Instagram</span><span class="tag">Facebook</span><span class="tag">TikTok</span><span class="tag">LinkedIn</span></div>
-        </div>
-        <div>
-          <span class="tool-group-label">Automation stack</span>
-          <div class="tags"><span class="tag">n8n</span><span class="tag">Vapi</span><span class="tag">OpenAI API</span><span class="tag">Google Sheets / Airtable</span></div>
+  <section class="section container" id="about">
+    <div class="about-section">
+      <div>
+        <span class="eyebrow" style="color: rgba(251,246,236,0.6);">Our story</span>
+        <h2>Keto food, made for real life in Lahore.</h2>
+        <p>Since 2017, Keto For Ketoers has been baking and cooking low-carb meals from a home kitchen in Lahore — built for people who want to eat well without giving up the foods they love.</p>
+        <p>Every loaf, roti, and dessert is made fresh to order, using ingredients chosen for taste first, macros second.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="num">2017</div><div class="label">Est.</div></div>
+          <div class="about-stat"><div class="num">17+</div><div class="label">Menu items</div></div>
+          <div class="about-stat"><div class="num">100%</div><div class="label">Keto friendly</div></div>
         </div>
       </div>
+      <svg class="about-stamp" viewBox="0 0 48 48" fill="none">
+        <path d="M24 4L44 19V44H4V19L24 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M16 24V40M16 24C16 20 13 17 13 17M16 24C16 20 19 17 19 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 17V40" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M28 17V27C28 29.2 29.8 31 32 31C34.2 31 36 29.2 36 27V17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="section border-top reveal" id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Services &amp; pricing</span>
-        <h2>Three things I do. Pick one, or stack all three.</h2>
-        <p>Prices are in USD and cover standard scope. Tell me your project and I'll confirm an exact quote before anything starts.</p>
-      </div>
-
-      <div class="tabs" role="tablist" aria-label="Service categories">
-        <button class="tab-btn" data-cat="design" role="tab" aria-selected="true"><span class="tab-num">01</span> Graphic Design</button>
-        <button class="tab-btn" data-cat="social" role="tab" aria-selected="false"><span class="tab-num">02</span> Social Media Management</button>
-        <button class="tab-btn" data-cat="automate" role="tab" aria-selected="false"><span class="tab-num">03</span> AI Agents &amp; Automation</button>
-      </div>
-
-      <!-- PANEL: DESIGN -->
-      <div class="panel active" data-cat="design" role="tabpanel">
-        <div class="panel-head">
-          <div>
-            <h3>Graphic Design</h3>
-            <p>Visuals that look like they cost more than they did — social posts, logos, and full brand kits.</p>
-          </div>
-        </div>
-        <div class="price-grid">
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Single Post</span><span class="price-tag">Per post</span></div>
-            <div class="price-num">$10</div>
-            <p class="price-desc">One platform-ready graphic in your brand colors. 1 round of revisions.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Single Social Post design ($10).">Get this →</button>
-          </div>
-          <div class="price-card featured">
-            <div class="price-top"><span class="price-name">Monthly Post Pack</span><span class="price-tag">10 posts</span></div>
-            <div class="price-num">$80</div>
-            <p class="price-desc">Ten on-brand posts for a month of content. 2 rounds of revisions, source files included.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Monthly Post Pack (10 posts, $80).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Logo Design</span><span class="price-tag">One-time</span></div>
-            <div class="price-num">$60</div>
-            <p class="price-desc">2 initial concepts, 2 rounds of revisions, final files in PNG, SVG and PDF.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Logo Design package ($60).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Brand Identity Kit</span><span class="price-tag">Full kit</span></div>
-            <div class="price-num">$250</div>
-            <p class="price-desc">Logo, color palette, fonts, business card, and a set of social media templates.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Brand Identity Kit ($250).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-name">Poster / Flyer</div>
-            <div class="price-num" style="margin-top:-4px;">$25</div>
-            <p class="price-desc">Print or digital, 1 concept with 2 rounds of revisions.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in a Poster/Flyer design ($25).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-name">Business Stationery</div>
-            <div class="price-num" style="margin-top:-4px;">$40</div>
-            <p class="price-desc">Business card, letterhead, and an email signature, all matching your brand.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in Business Stationery design ($40).">Get this →</button>
-          </div>
-        </div>
-        <p class="price-note">Need something custom — packaging, merchandise, a pitch deck? Message me with the details and I'll quote it directly.</p>
-      </div>
-
-      <!-- PANEL: SOCIAL -->
-      <div class="panel" data-cat="social" role="tabpanel">
-        <div class="panel-head">
-          <div>
-            <h3>Social Media Management</h3>
-            <p>I run the pages myself by hand — writing, posting, and replying — not auto-scheduling and walking away.</p>
-          </div>
-        </div>
-        <div class="price-grid">
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Starter</span><span class="price-tag">/ month</span></div>
-            <div class="price-num">$150</div>
-            <p class="price-desc">1 platform, 12 posts a month, manual posting, daily comment &amp; DM replies.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Starter Social Media Management plan ($150/mo).">Get this →</button>
-          </div>
-          <div class="price-card featured">
-            <div class="price-top"><span class="price-name">Growth</span><span class="price-tag">/ month</span></div>
-            <div class="price-num">$300</div>
-            <p class="price-desc">2 platforms, 20 posts, content calendar, daily engagement, monthly report.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Growth Social Media Management plan ($300/mo).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Pro</span><span class="price-tag">/ month</span></div>
-            <div class="price-num">$500</div>
-            <p class="price-desc">3 platforms, daily posting, full community management, growth strategy, monthly strategy call.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Pro Social Media Management plan ($500/mo).">Get this →</button>
-          </div>
-        </div>
-        <div class="addon-row">
-          <span class="addon-text">Want paid promotion too? <b>Meta/Instagram ad setup &amp; management</b> — from $100/mo + ad spend.</span>
-          <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in Meta/Instagram ad management as an add-on.">Ask about ads →</button>
-        </div>
-        <p class="price-note">All plans are billed monthly. Platforms can be swapped (e.g. Instagram + TikTok instead of Facebook) at no extra cost.</p>
-      </div>
-
-      <!-- PANEL: AUTOMATE -->
-      <div class="panel" data-cat="automate" role="tabpanel">
-        <div class="panel-head">
-          <div>
-            <h3>AI Agents &amp; Automation</h3>
-            <p>Chatbots built in n8n and voice agents built in Vapi — they answer, qualify, and book while you're busy doing the actual work.</p>
-          </div>
-        </div>
-
-        <span class="tool-group-label" style="margin-bottom:14px; display:block;">Chatbots (n8n)</span>
-        <div class="price-grid">
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Starter Bot</span><span class="price-tag">One-time</span></div>
-            <div class="price-num">$120</div>
-            <p class="price-desc">One workflow — an FAQ or lead-capture bot for WhatsApp, Instagram DM, or your website.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Starter n8n Chatbot ($120).">Get this →</button>
-          </div>
-          <div class="price-card featured">
-            <div class="price-top"><span class="price-name">Standard Bot</span><span class="price-tag">One-time</span></div>
-            <div class="price-num">$280</div>
-            <p class="price-desc">Multi-step bot with conditional logic, plus CRM, Sheets, or email integration.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Standard n8n Chatbot ($280).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Advanced Bot</span><span class="price-tag">From</span></div>
-            <div class="price-num">$500</div>
-            <p class="price-desc">Multi-platform bot with AI-generated replies and database or third-party API integrations.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in an Advanced n8n Chatbot (from $500).">Get this →</button>
-          </div>
-        </div>
-
-        <span class="tool-group-label" style="margin:30px 0 14px; display:block;">Voice agents (Vapi)</span>
-        <div class="price-grid">
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Starter Agent</span><span class="price-tag">One-time</span></div>
-            <div class="price-num">$250</div>
-            <p class="price-desc">One phone number, single-purpose voice agent — bookings or FAQ answering.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Starter Vapi Voice Agent ($250).">Get this →</button>
-          </div>
-          <div class="price-card featured">
-            <div class="price-top"><span class="price-name">Standard Agent</span><span class="price-tag">One-time</span></div>
-            <div class="price-num">$500</div>
-            <p class="price-desc">Calendar booking, CRM integration, and call routing logic.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in the Standard Vapi Voice Agent ($500).">Get this →</button>
-          </div>
-          <div class="price-card">
-            <div class="price-top"><span class="price-name">Advanced Agent</span><span class="price-tag">From</span></div>
-            <div class="price-num">$900</div>
-            <p class="price-desc">Multi-language support, custom voice, call analytics, and complex call flows.</p>
-            <button class="price-get" data-wa-msg="Hi Waleed, I'm interested in an Advanced Vapi Voice Agent (from $900).">Get this →</button>
-          </div>
-        </div>
-
-        <div class="addon-row">
-          <span class="addon-text">Already have a bot or voice agent live? <b>Monitoring &amp; maintenance</b> — $60/mo covers updates and minor tweaks.</span>
-          <button class="price-get" data-wa-msg="Hi Waleed, I'd like to ask about monthly maintenance for an automation ($60/mo).">Ask about this →</button>
-        </div>
-        <p class="price-note">Final price depends on how many steps, integrations, and edge cases the workflow needs — message me with your use case for an exact quote.</p>
-      </div>
-
+  <!-- DELIVERY -->
+  <section class="section container" id="delivery">
+    <div class="section-head">
+      <span class="eyebrow">Delivery</span>
+      <h2>We deliver across Lahore.</h2>
     </div>
-  </section>
-
-  <!-- WHY -->
-  <section class="section border-top reveal" id="why">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Why work with me</span>
-        <h2>No handoffs between three different freelancers.</h2>
+    <div class="delivery-card">
+      <div class="delivery-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <span class="why-mark">—</span>
-          <h4>One point of contact</h4>
-          <p>The same person designs the post, manages where it's published, and builds whatever automates the follow-up.</p>
-        </div>
-        <div class="why-card">
-          <span class="why-mark">—</span>
-          <h4>Manual, not automated, social</h4>
-          <p>Your pages are run by hand — real replies, real posting times — automation is reserved for the parts that should be automated.</p>
-        </div>
-        <div class="why-card">
-          <span class="why-mark">—</span>
-          <h4>Built on tools that scale</h4>
-          <p>n8n and Vapi mean your automations aren't locked to me — you own the workflow and can hand it to anyone later.</p>
-        </div>
-        <div class="why-card">
-          <span class="why-mark">—</span>
-          <h4>Clear pricing upfront</h4>
-          <p>Every package above has a real starting price. No "contact for pricing" until you actually want a custom quote.</p>
-        </div>
+      <div class="delivery-text">
+        <h3>Flat-rate delivery, Lahore only</h3>
+        <p>We currently deliver only within Lahore. A flat delivery charge is added at checkout — no zone calculations, no surprises.</p>
+      </div>
+      <div class="delivery-fee">
+        <span class="amt" id="deliveryFeeDisplay">Rs. 200</span>
+        <span class="lbl">Flat fee</span>
       </div>
     </div>
   </section>
-
-  <!-- FAQ -->
-  <section class="section border-top reveal" id="faq">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">FAQ</span>
-        <h2>Common questions</h2>
-      </div>
-      <div class="faq-list">
-        <details>
-          <summary>Can you combine services into one package? <span class="plus">+</span></summary>
-          <p>Yes. A common combination is a Brand Identity Kit plus a Growth social media plan plus a Starter chatbot — message me with what you need and I'll quote the bundle, usually at a small discount over booking each separately.</p>
-        </details>
-        <details>
-          <summary>What's the difference between the n8n and Vapi services? <span class="plus">+</span></summary>
-          <p>n8n builds text-based automations — chatbots and workflows that run on WhatsApp, Instagram, or your website. Vapi builds voice agents that actually answer or make phone calls. Many clients use both: a chatbot for messages and a voice agent for calls.</p>
-        </details>
-        <details>
-          <summary>Do you manage social media accounts I already have, or only new ones? <span class="plus">+</span></summary>
-          <p>Both. If you already have pages, I'll review what's working before changing anything. If you're starting fresh, I'll set up the profiles as part of the first month.</p>
-        </details>
-        <details>
-          <summary>How do payments work? <span class="plus">+</span></summary>
-          <p>One-time projects (design, chatbots, voice agents) are 50% upfront and 50% on delivery. Monthly plans (social media management, maintenance) are billed at the start of each month.</p>
-        </details>
-        <details>
-          <summary>I'm not sure which service I need. <span class="plus">+</span></summary>
-          <p>That's fine — send a message describing the problem you're trying to solve, not the service you think you need. I'll tell you honestly which package fits, or if you need a custom mix.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section border-top reveal" id="contact">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Contact</span>
-        <h2>Tell me what you're trying to build.</h2>
-        <p>Reply to a package above, use the form, or reach out directly — whatever's fastest for you.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-direct">
-          <div class="contact-row">
-            <div class="cinfo">
-              <span class="clabel">WhatsApp / Call</span>
-              <span class="cvalue">+92 324 7640665</span>
-            </div>
-            <div style="display:flex; gap:8px;">
-              <button class="copy-btn" data-copy="+923247640665">Copy</button>
-              <button class="copy-btn" data-wa-msg="Hi Waleed, I'd like to get in touch about a project.">WhatsApp</button>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="cinfo">
-              <span class="clabel">Email</span>
-              <span class="cvalue">waleedimran2518@gmail.com</span>
-            </div>
-            <div style="display:flex; gap:8px;">
-              <button class="copy-btn" data-copy="waleedimran2518@gmail.com">Copy</button>
-              <a class="copy-btn" href="mailto:waleedimran2518@gmail.com" style="display:inline-flex; align-items:center;">Email</a>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="cinfo">
-              <span class="clabel">Direct call</span>
-              <span class="cvalue">Tap to dial</span>
-            </div>
-            <a class="copy-btn" href="tel:+923247640665" style="display:inline-flex; align-items:center;">Call now</a>
-          </div>
-        </div>
-
-        <div class="form-card">
-          <div class="field">
-            <label for="cf-name">Your name</label>
-            <input id="cf-name" type="text" placeholder="Full name" required>
-          </div>
-          <div class="field">
-            <label for="cf-service">Which service?</label>
-            <select id="cf-service">
-              <option>Graphic Design</option>
-              <option>Social Media Management</option>
-              <option>AI Agents &amp; Automation</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="cf-message">What do you need?</label>
-            <textarea id="cf-message" rows="4" placeholder="Briefly describe your project..." required></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-primary" id="sendEmailBtn" type="button">Send via email</button>
-            <button class="btn btn-outline" id="sendWaBtn" type="button">Send via WhatsApp</button>
-          </div>
-          <p class="form-msg" id="formMsg"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<footer>
-  <div class="wrap footer-inner">
-    <span class="fname">Muhammad Waleed Bin Imran</span>
-    <span class="fmeta">+92 324 7640665 · waleedimran2518@gmail.com · © 2026</span>
-  </div>
-</footer>
-
-<button class="totop" id="toTop" aria-label="Back to top">↑</button>
-
+<script src="js/menu-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/components.js"></script>
 <script>
-(function(){
-  // Mobile nav toggle
-  var nav = document.getElementById('siteNav');
-  var navToggle = document.getElementById('navToggle');
-  navToggle.addEventListener('click', function(){
-    var open = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.querySelectorAll('.nav-mobile a').forEach(function(a){
-    a.addEventListener('click', function(){ nav.classList.remove('open'); });
-  });
+  renderHeader("");
+  renderFooter("");
+  updateCartBadge();
 
-  // WhatsApp helper
-  var WA_NUMBER = '923247640665';
-  function waUrl(msg){
-    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-  }
-  document.querySelectorAll('[data-wa-msg]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      window.open(waUrl(btn.getAttribute('data-wa-msg')), '_blank');
-    });
-  });
+  document.getElementById("deliveryFeeDisplay").textContent = formatPrice(BRAND.deliveryFee);
 
-  // Copy buttons
-  document.querySelectorAll('[data-copy]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var val = btn.getAttribute('data-copy');
-      var done = function(){
-        var original = btn.textContent;
-        btn.textContent = 'Copied';
-        btn.classList.add('copied');
-        setTimeout(function(){ btn.textContent = original; btn.classList.remove('copied'); }, 1600);
-      };
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(val).then(done).catch(done);
-      } else {
-        done();
-      }
-    });
-  });
+  const icons = {
+    dessert: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a8 8 0 0116 0v1H4v-1z"/><path d="M3 16h18M5 16l1 4h12l1-4"/><path d="M12 7V3M9 5l1 2M15 5l-1 2"/></svg>`,
+    bread: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-4 3-8 8-8s8 4 8 8v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6z"/><path d="M9 11v5M12 9v7M15 11v5"/></svg>`,
+    roti: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5" stroke-dasharray="2 3"/></svg>`,
+    snack: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11L12 4l9 7"/><path d="M5 11v8a1 1 0 001 1h12a1 1 0 001-1v-8"/><circle cx="12" cy="14" r="1.4" fill="currentColor" stroke="none"/><circle cx="9" cy="17" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="17" r="1.2" fill="currentColor" stroke="none"/></svg>`,
+    cookie: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r="1" fill="currentColor" stroke="none"/></svg>`
+  };
 
-  // Tabs
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  var panels = document.querySelectorAll('.panel');
-  tabBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var cat = btn.getAttribute('data-cat');
-      tabBtns.forEach(function(b){ b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
-      panels.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-cat') === cat); });
-    });
-  });
-
-  // Contact form
-  var nameEl = document.getElementById('cf-name');
-  var serviceEl = document.getElementById('cf-service');
-  var msgEl = document.getElementById('cf-message');
-  var formMsg = document.getElementById('formMsg');
-
-  function buildText(){
-    return 'Name: ' + nameEl.value + '\n' +
-           'Service: ' + serviceEl.value + '\n' +
-           'Details: ' + msgEl.value;
-  }
-  function validate(){
-    if(!nameEl.value.trim() || !msgEl.value.trim()){
-      formMsg.textContent = 'Please add your name and a short description first.';
-      formMsg.style.color = '#FF6B4A';
-      formMsg.classList.add('show');
-      return false;
-    }
-    return true;
-  }
-
-  document.getElementById('sendEmailBtn').addEventListener('click', function(){
-    if(!validate()) return;
-    var subject = encodeURIComponent('New project inquiry — ' + serviceEl.value);
-    var body = encodeURIComponent(buildText());
-    window.location.href = 'mailto:waleedimran2518@gmail.com?subject=' + subject + '&body=' + body;
-    formMsg.style.color = '#2BD9A8';
-    formMsg.textContent = 'Opening your email app...';
-    formMsg.classList.add('show');
-  });
-
-  document.getElementById('sendWaBtn').addEventListener('click', function(){
-    if(!validate()) return;
-    window.open(waUrl(buildText()), '_blank');
-    formMsg.style.color = '#2BD9A8';
-    formMsg.textContent = 'Opening WhatsApp...';
-    formMsg.classList.add('show');
-  });
-
-  // Back to top
-  var toTop = document.getElementById('toTop');
-  window.addEventListener('scroll', function(){
-    toTop.classList.toggle('show', window.scrollY > 500);
-  });
-  toTop.addEventListener('click', function(){
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-
-  // Reveal on scroll
-  if('IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){ entry.target.classList.add('in'); observer.unobserve(entry.target); }
-      });
-    }, {threshold:0.12});
-    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-  }
-})();
-</script>
-
-<!-- n8n chat widget -->
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<style>
-  :root{
-    --chat--color-primary:#2BD9A8;
-    --chat--color-primary-shade-50:#22B98D;
-    --chat--color-secondary:#7C5CFF;
-    --chat--color-secondary-shade-50:#6647e0;
-    --chat--color-white:#ECEAE6;
-    --chat--color-light:#1A1D27;
-    --chat--color-light-shade-50:#15171F;
-    --chat--color-light-shade-100:#0F1115;
-    --chat--color-medium:#6E6E7A;
-    --chat--color-dark:#0F1115;
-    --chat--color-disabled:#6E6E7A;
-    --chat--color-typing:#9B9BA8;
-    --chat--spacing:1rem;
-    --chat--border-radius:14px;
-    --chat--transition-duration:0.15s;
-    --chat--window--width:380px;
-    --chat--window--height:580px;
-    --chat--header--background:#15171F;
-    --chat--header--color:#ECEAE6;
-    --chat--heading--font-size:1.3em;
-    --chat--subtitle--font-size:0.85em;
-    --chat--textarea--height:50px;
-    --chat--message--font-size:0.95rem;
-    --chat--message--bot--background:#1A1D27;
-    --chat--message--bot--color:#ECEAE6;
-    --chat--message--bot--border:1px solid rgba(255,255,255,0.09);
-    --chat--message--user--background:#2BD9A8;
-    --chat--message--user--color:#08221A;
-    --chat--toggle--background:#2BD9A8;
-    --chat--toggle--hover--background:#22B98D;
-    --chat--toggle--active--background:#1c9c79;
-    --chat--toggle--color:#08221A;
-    --chat--toggle--size:58px;
-  }
-  .n8n-chat-window{ font-family:'Plus Jakarta Sans',sans-serif !important; }
-</style>
-<script type="module">
-  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-  createChat({
-    webhookUrl: 'https://waleed25.app.n8n.cloud/webhook/66cf1d5f-7dd1-4609-b235-693685693b3e/chat',
-    mode: 'window',
-    showWelcomeScreen: true,
-    initialMessages: [
-      'Hi 👋',
-      "I'm Waleed's assistant. Ask me about pricing, services, or how to get started — or message him directly using the contact section."
-    ],
-    i18n: {
-      en: {
-        title: "Chat with Waleed's assistant",
-        subtitle: 'Ask about design, social media, or AI automation pricing.',
-        footer: '',
-        getStarted: 'New conversation',
-        inputPlaceholder: 'Type your question...',
-        closeButtonTooltip: 'Close chat',
-      },
-    },
-  });
+  const grid = document.getElementById("categoryGrid");
+  grid.innerHTML = CATEGORIES.map(cat => `
+    <a href="pages/category.html?cat=${cat.id}" class="cat-card">
+      <div class="cat-icon">${icons[cat.icon]}</div>
+      <h3>${cat.name}</h3>
+      <p>${cat.description}</p>
+      <span class="cat-link">View items <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  `).join("");
 </script>
 
 </body>
