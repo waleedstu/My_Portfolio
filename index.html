@@ -844,5 +844,69 @@
 })();
 </script>
 
+<!-- n8n chat widget -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+  :root{
+    --chat--color-primary:#2BD9A8;
+    --chat--color-primary-shade-50:#22B98D;
+    --chat--color-secondary:#7C5CFF;
+    --chat--color-secondary-shade-50:#6647e0;
+    --chat--color-white:#ECEAE6;
+    --chat--color-light:#1A1D27;
+    --chat--color-light-shade-50:#15171F;
+    --chat--color-light-shade-100:#0F1115;
+    --chat--color-medium:#6E6E7A;
+    --chat--color-dark:#0F1115;
+    --chat--color-disabled:#6E6E7A;
+    --chat--color-typing:#9B9BA8;
+    --chat--spacing:1rem;
+    --chat--border-radius:14px;
+    --chat--transition-duration:0.15s;
+    --chat--window--width:380px;
+    --chat--window--height:580px;
+    --chat--header--background:#15171F;
+    --chat--header--color:#ECEAE6;
+    --chat--heading--font-size:1.3em;
+    --chat--subtitle--font-size:0.85em;
+    --chat--textarea--height:50px;
+    --chat--message--font-size:0.95rem;
+    --chat--message--bot--background:#1A1D27;
+    --chat--message--bot--color:#ECEAE6;
+    --chat--message--bot--border:1px solid rgba(255,255,255,0.09);
+    --chat--message--user--background:#2BD9A8;
+    --chat--message--user--color:#08221A;
+    --chat--toggle--background:#2BD9A8;
+    --chat--toggle--hover--background:#22B98D;
+    --chat--toggle--active--background:#1c9c79;
+    --chat--toggle--color:#08221A;
+    --chat--toggle--size:58px;
+  }
+  .n8n-chat-window{ font-family:'Plus Jakarta Sans',sans-serif !important; }
+</style>
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  createChat({
+    webhookUrl: 'https://waleed25.app.n8n.cloud/webhook/66cf1d5f-7dd1-4609-b235-693685693b3e/chat',
+    mode: 'window',
+    showWelcomeScreen: true,
+    initialMessages: [
+      'Hi 👋',
+      "I'm Waleed's assistant. Ask me about pricing, services, or how to get started — or message him directly using the contact section."
+    ],
+    i18n: {
+      en: {
+        title: "Chat with Waleed's assistant",
+        subtitle: 'Ask about design, social media, or AI automation pricing.',
+        footer: '',
+        getStarted: 'New conversation',
+        inputPlaceholder: 'Type your question...',
+        closeButtonTooltip: 'Close chat',
+      },
+    },
+  });
+</script>
+
 </body>
 </html>
